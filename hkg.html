@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Hacking Effect</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      margin: 0;
+      padding: 20px;
+    }
+    #output {
+      white-space: pre-wrap;
+      font-size: 16px;
+      line-height: 1.3;
+    }
+    #final {
+      color: red;
+      font-size: 36px;
+      font-weight: bold;
+      display: none;
+      margin-top: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="output"></div>
+  <div id="final">ウソです！安心してください😆</div>
+
+  <script>
+    const output = document.getElementById("output");
+    const finalMsg = document.getElementById("final");
+
+    // 大量のログっぽいメッセージ
+    const logWords = [
+      "[*] Initializing connection...",
+      "[*] Connecting to 192.168." + Math.floor(Math.random() * 255),
+      "[*] Connecting to 10.0.0." + Math.floor(Math.random() * 255),
+      "[*] Handshake successful",
+      "[*] Port 22 open",
+      "[*] Port 80 open",
+      "[*] Port 443 open",
+      "[*] Port scan complete",
+      "[*] AUTH SUCCESS",
+      "[*] AUTH FAILED: retrying...",
+      "[*] USER: root",
+      "[*] USER: admin",
+      "[*] USER: guest",
+      "[*] PASSWORD ACCEPTED",
+      "[*] PASSWORD REJECTED",
+      "[*] sudo access granted",
+      "[*] privilege escalation successful",
+      "[*] fetching /etc/passwd...",
+      "[*] dumping shadow file...",
+      "[*] decrypting password hashes...",
+      "[*] hash cracked: admin123",
+      "[*] hash cracked: qwerty",
+      "[*] hash cracked: 123456",
+      "[*] Uploading payload...",
+      "[*] Executing exploit...",
+      "[*] Buffer overflow triggered",
+      "[*] Shell obtained",
+      "[*] remote shell active",
+      "[*] Reverse shell established",
+      "[*] Listening on port 4444",
+      "[*] Listening on port 1337",
+      "[*] Data exfiltration in progress",
+      "[*] Downloading 200MB...",
+      "[*] Uploading malware.exe...",
+      "[*] Transfer complete",
+      "[*] Transfer failed, retrying...",
+      "[*] WARNING: Unauthorized access detected!",
+      "[*] ALERT: firewall bypassed",
+      "[*] ALERT: IDS signature evaded",
+      "[*] ALERT: Rootkit installed",
+      "[*] System log cleared",
+      "[*] Audit trail wiped",
+      "[*] Traces removed",
+      "[*] --- SESSION LOG START ---",
+      "[*] ping 8.8.8.8 - response OK",
+      "[*] ssh connection established",
+      "[*] ftp login successful",
+      "[*] telnet login failed",
+      "[*] sql injection attempt successful",
+      "[*] NoSQL injection bypass",
+      "[*] root@target:/# ls -la",
+      "drwxr-xr-x  5 root root 4096 Aug 29 19:00 /root",
+      "-rw-r--r--  1 root root  531 Aug 29 19:00 secret.txt",
+      "-rw-r--r--  1 root root 1024 Aug 29 19:00 database.db",
+      "[*] cat secret.txt",
+      "[*] echo 'hacked' > index.html",
+      "[*] rm -rf /var/log/*",
+      "[*] chmod 777 /etc/shadow",
+      "[*] ACCESS GRANTED",
+      "[*] ACCESS DENIED",
+      "[*] >>> SYSTEM COMPROMISED <<<",
+      "[*] >>> MISSION COMPLETE <<<"
+    ];
+
+    function randomString(length) {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let str = "";
+      for (let i = 0; i < length; i++) {
+        str += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return str;
+    }
+
+    let lineCount = 0;
+    const maxLines = 250; // 爆速だから多めに
+
+    function streamText() {
+      if (lineCount < maxLines) {
+        let line = "";
+
+        if (Math.random() < 0.45) { // 45%はログっぽい文を出す
+          line = logWords[Math.floor(Math.random() * logWords.length)];
+        } else {
+          line = randomString(40 + Math.floor(Math.random() * 40));
+        }
+
+        output.innerHTML += line + "\n";
+        lineCount++;
+        window.scrollTo(0, document.body.scrollHeight);
+
+        setTimeout(streamText, 5); // 0.005秒ごと → 読めない爆速
+      } else {
+        finalMsg.style.display = "block";
+        window.scrollTo(0, document.body.scrollHeight);
+      }
+    }
+
+    streamText();
+  </script>
+</body>
+</html>
