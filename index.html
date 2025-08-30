@@ -2,45 +2,120 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>警告ページ</title>
+  <title>⚠️ 危険な操作 ⚠️</title>
   <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #2b0000;
+      color: white;
+      overflow: hidden;
+      animation: flash-bg 1s infinite alternate;
+    }
+
+    p, a {
+      padding: 20px;
+      font-size: 18px;
+    }
+
+    a {
+      color: #ff4040;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
     .marquee-container {
       width: 100%;
       overflow: hidden;
-      white-space: nowrap;
+      background-color: #400000;
+      border-top: 3px solid red;
+      border-bottom: 3px solid red;
       box-sizing: border-box;
-      background-color: #fff0f0;
-      border: 1px solid red;
-      padding: 10px 0;
+      padding: 15px 0;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll-left 15s linear infinite;
     }
 
     .marquee-text {
       display: inline-block;
-      color: red;
+      color: #ff3030;
       font-weight: bold;
-      font-size: 16px;
-      animation: marquee 15s linear infinite;
+      font-size: 20px;
+      padding-right: 120px;
     }
 
-    @keyframes marquee {
+    @keyframes scroll-left {
       0% {
-        transform: translateX(100%);
+        transform: translateX(0%);
       }
       100% {
-        transform: translateX(-100%);
+        transform: translateX(-50%);
       }
+    }
+
+    @keyframes flash-bg {
+      0% { background-color: #2b0000; }
+      100% { background-color: #5e0000; }
     }
   </style>
 </head>
 <body>
 
-  <p>今からすごいことをします。いいですか？<a href="hkg.html">はい</a></p>
+  <!-- ユーザーにクリックさせる導入 -->
+  <p>今からすごいことをします。いいですか？ <a href="#" onclick="startWarning()">はい</a></p>
 
+  <!-- 警告文スクロール -->
   <div class="marquee-container">
-    <div class="marquee-text">
-      ⚠️ 注意：この操作は元に戻せません。　⚠️ 注意：絶対にボタンを押さないでください。　⚠️ 注意：パソコンが壊れます。　⚠️ 注意：何が起こるかわかりません。　⚠️ 注意：タブを閉じることを強く推奨します。　⚠️ 注意：押したら呪われます。
+    <div class="marquee-track" id="marquee">
+      <span class="marquee-text">⚠️ 危険：この操作は元に戻せません。</span>
+      <span class="marquee-text">🔥 警告：システムが破壊される可能性があります。</span>
+      <span class="marquee-text">💀 注意：データは完全に消去されます。</span>
+      <span class="marquee-text">🧨 警告：CPU温度が急上昇する可能性あり。</span>
+      <span class="marquee-text">⚡ 警告：電源を切ることはできません。</span>
+      <span class="marquee-text">💣 注意：クラッシュが発生する可能性があります。</span>
+      <span class="marquee-text">🛑 警告：今すぐタブを閉じてください。</span>
+      <!-- ループ用に複製 -->
+      <span class="marquee-text">⚠️ 危険：この操作は元に戻せません。</span>
+      <span class="marquee-text">🔥 警告：システムが破壊される可能性があります。</span>
+      <span class="marquee-text">💀 注意：データは完全に消去されます。</span>
+      <span class="marquee-text">🧨 警告：CPU温度が急上昇する可能性あり。</span>
+      <span class="marquee-text">⚡ 警告：電源を切ることはできません。</span>
+      <span class="marquee-text">💣 注意：クラッシュが発生する可能性があります。</span>
+      <span class="marquee-text">🛑 警告：今すぐタブを閉じてください。</span>
     </div>
   </div>
+
+  <!-- 怖いBGM -->
+  <audio id="bgm" loop>
+    <source src="scary.mp3" type="audio/mpeg">
+    <source src="scary.ogg" type="audio/ogg">
+    <!-- mp3とogg両方用意しておくと互換性アップ -->
+    あなたのブラウザはaudio要素をサポートしていません。
+  </audio>
+
+  <script>
+    function startWarning() {
+      // BGM再生
+      const bgm = document.getElementById('bgm');
+      bgm.play().catch(() => {
+        alert("ブラウザが自動再生をブロックしています。クリック後に再読み込みしてください。");
+      });
+
+      // 離脱防止イベントを登録
+      window.onbeforeunload = function () {
+        return "本当にこのページを離れますか？破壊的な処理が進行中です。";
+      };
+
+      // 警告テキストの表示（すでに表示されてるのでここは任意）
+      document.getElementById('marquee').style.display = 'inline-block';
+    }
+  </script>
 
 </body>
 </html>
