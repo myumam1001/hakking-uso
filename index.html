@@ -1,2 +1,46 @@
-<p>今からすごいことをします。いいですか？<a href="hkg.html">はい</a>
-<p><span style="color: red; font-weight: bold;">⚠️ 注意：この操作は元に戻せません。</span><span style="color: red; font-weight: bold;">⚠️ 注意：パソコンが壊れます。</span><span style="color: red; font-weight: bold;">⚠️ 注意：何が起こるかわかりません。</span><span style="color: red; font-weight: bold;">⚠️ 注意：タブを閉じることを強く推奨します。</span></p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>警告ページ</title>
+  <style>
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      background-color: #fff0f0;
+      border: 1px solid red;
+      padding: 10px 0;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      color: red;
+      font-weight: bold;
+      font-size: 16px;
+      animation: marquee 15s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <p>今からすごいことをします。いいですか？<a href="hkg.html">はい</a></p>
+
+  <div class="marquee-container">
+    <div class="marquee-text">
+      ⚠️ 注意：この操作は元に戻せません。　⚠️ 注意：絶対にボタンを押さないでください。　⚠️ 注意：パソコンが壊れます。　⚠️ 注意：何が起こるかわかりません。　⚠️ 注意：タブを閉じることを強く推奨します。　⚠️ 注意：押したら呪われます。
+    </div>
+  </div>
+
+</body>
+</html>
