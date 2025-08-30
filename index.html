@@ -61,12 +61,20 @@ body {
     }
 
 @keyframes flash-bg {
-  0%   { background-color: #5e0000; }
-  25%  { background-color: #ff1a1a; }
-  50%  { background-color: #ffffff; }
-  75%  { background-color: #ff1a1a; }
-  100% { background-color: #5e0000; }
+  0%, 70%, 100% {
+    background-color: #5e0000;
+  }
+  75%, 80% {
+    background-color: #ff1a1a;
+  }
+  85% {
+    background-color: #ffffff;
+  }
+  90% {
+    background-color: #ff1a1a;
+  }
 }
+
 
   </style>
 </head>
