@@ -122,9 +122,8 @@ body {
       });
 
       // 離脱防止イベントを登録
-      window.onbeforeunload = function () {
-        return "本当にこのページを離れますか？破壊的な処理が進行中です。";
-      };
+      window.onbeforeunload = null;
+
 
       // 警告テキストの表示（すでに表示されてるのでここは任意）
       document.getElementById('marquee').style.display = 'inline-block';
