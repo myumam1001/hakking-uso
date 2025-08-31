@@ -28,7 +28,8 @@
 </head>
 <body>
   <div id="output"></div>
-  <div id="final">ウソです！安心してください👅www<a herf="">このタブを閉じる</a></div>
+  <div id="final">ウソです！安心してください👅www<br>
+</div>
 
   <script>
     const output = document.getElementById("output");
@@ -134,6 +135,11 @@
     }
 
     streamText();
+    
+      function playAudio() {
+      const audio = document.getElementById("myAudio");
+      audio.play();
+    }
   </script>
 </body>
 </html>
