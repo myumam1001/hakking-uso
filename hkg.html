@@ -31,7 +31,9 @@
   <div id="final">ウソです！安心してください😜www  押せ➡️<a href="#" onclick="playAudio(); return false;">このタブを閉じる</a>
 <br>
  <audio id="myAudio" src="江南スタイル（ＰＳＹ）.wav"></audio>
-<audio id="HEIWA" src="HEIWAの鐘.mp4"></audio>※反応しない場合は音量を上げてみてください（？）</div>
+<audio id="HEIWA" src="HEIWAの鐘.mp4"><audio>
+<audio id="gangnam" src="V.mp3"></audio>
+  ※反応しない場合は音量を上げてみてください（？）</div>
 
   <script>
     let kaisuu = 0
@@ -143,8 +145,13 @@
       const audio = document.getElementById("myAudio");
       kaisuu++;
       if (kaisuu === 10) ;
-        document.getElementByid("final").innerHTML = "<h1>そんなにカンナムが聞きたいならフルバージョンをあげる！！</h1>"
+        document.getElementByid("final").innerHTML = "<a href="#" onclick=playAudio2()>そんなにカンナムが聞きたいならフルバージョンをあげる！！<a>"
+        const gangnam = document.getElementByid("gangnam");
       audio.play();
+    }
+
+    function playAudio2() {
+      gangnam.play()
     }
   </script>
 </body>
