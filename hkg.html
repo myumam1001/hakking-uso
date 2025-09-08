@@ -144,9 +144,10 @@
       function playAudio() {
       const audio = document.getElementById("myAudio");
       kaisuu++;
-      if (kaisuu === 10) ;
-        document.getElementByid("final").innerHTML = "<a href="#" onclick=playAudio2()>そんなにカンナムが聞きたいならフルバージョンをあげる！！<a>"
-        const gangnam = document.getElementByid("gangnam");
+      if (kaisuu === 10) {
+        document.getElementById("final").innerHTML = "<a href='#' onclick=playAudio2()>そんなにカンナムが聞きたいならフルバージョンをあげる！！<a>"
+        const gangnam = document.getElementById("gangnam");
+        {
       audio.play();
     }
 
